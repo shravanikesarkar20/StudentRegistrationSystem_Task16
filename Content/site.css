@@ -1,0 +1,348 @@
+/* ============================================================
+   Advanced Student Registration System — Shared Site Styles
+   Loaded on every page, after Bootstrap, to give a consistent,
+   attractive, comfortably-readable look across the whole app.
+
+   Theme: "Aurora" — deep teal + amber accent, Plus Jakarta Sans.
+
+   Design goals:
+   - No page should ever need browser zoom in/out on a normal
+     desktop screen (1280px and up) to fill a form or use the
+     admin dashboard.
+   - Base font sizes are tuned for comfortable PC reading
+     (15-16px body/content, never below ~13px anywhere).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --brand: #0d9488;
+    --brand-2: #2dd4bf;
+    --brand-dark: #0f766e;
+    --brand-soft: rgba(13, 148, 136, .08);
+    --brand-soft-strong: rgba(13, 148, 136, .16);
+    --accent-teal: #0aa2a2;
+    --accent-amber: #f59e0b;
+    --success: #16a34a;
+    --danger: #e11d48;
+    --warning: #b45309;
+
+    --ink: #111827;
+    --ink-soft: #4b5563;
+    --ink-muted: #78818c;
+
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 11px;
+
+    --shadow-soft: 0 4px 18px rgba(15, 30, 40, .07);
+    --shadow-hover: 0 14px 32px rgba(13, 148, 136, .16);
+    --shadow-card: 0 1px 2px rgba(17, 24, 39, .05), 0 12px 28px rgba(17, 24, 39, .05);
+
+    /* Typography scale — tuned so nothing needs zoom on a PC */
+    --fs-base: 16px;      /* body copy */
+    --fs-sm: 14.5px;      /* helper text, table cells */
+    --fs-xs: 13px;        /* badges, meta text — floor, never smaller */
+    --fs-lg: 18px;        /* section labels */
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: var(--fs-base); -webkit-text-size-adjust: 100%; }
+
+body {
+    background: #f4f7f6;
+    background-image:
+        radial-gradient(circle at 100% 0%, rgba(13, 148, 136, .05), transparent 45%),
+        radial-gradient(circle at 0% 100%, rgba(245, 158, 11, .045), transparent 40%);
+    background-attachment: fixed;
+    font-family: "Plus Jakarta Sans", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 { color: var(--ink); font-weight: 800; letter-spacing: -.01em; }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-dark); text-decoration: underline; }
+
+/* ---------- Navbar ---------- */
+.navbar.navbar-dark.bg-primary {
+    background: linear-gradient(115deg, #0b2b28 0%, #0f4c46 55%, #0d9488 100%) !important;
+    box-shadow: 0 4px 20px rgba(9, 30, 27, .28);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid rgba(45, 212, 191, .35);
+}
+.navbar-brand {
+    font-size: 1.15rem !important;
+    font-weight: 800;
+    letter-spacing: -.01em;
+}
+.navbar .btn-light, .navbar .btn-outline-light {
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .875rem;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+.navbar .btn-light {
+    background: var(--accent-amber);
+    border-color: var(--accent-amber);
+    color: #1c1000;
+}
+.navbar .btn-light:hover {
+    background: #ffb52e;
+    border-color: #ffb52e;
+    color: #1c1000;
+}
+.navbar .btn-outline-light:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,.22);
+}
+.navbar .badge { font-size: .85rem; font-weight: 600; }
+
+/* ---------- Cards ---------- */
+.card {
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+.card.shadow-sm:hover {
+    box-shadow: var(--shadow-hover);
+}
+.card-header-gradient {
+    background: linear-gradient(115deg, var(--brand-dark), var(--brand), var(--brand-2)) !important;
+    color: #fff;
+    border-top-left-radius: var(--radius-lg) !important;
+    border-top-right-radius: var(--radius-lg) !important;
+}
+.card-header-gradient h4, .card-header-gradient h5 { color: #fff; font-size: 1.15rem; }
+.card-header {
+    border-top-left-radius: var(--radius-lg) !important;
+    border-top-right-radius: var(--radius-lg) !important;
+    font-size: 1rem;
+}
+.card-body { font-size: 1rem; }
+
+/* ---------- Forms ---------- */
+.form-label {
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--ink-soft);
+    margin-bottom: .4rem;
+}
+.form-control, .form-select {
+    border-radius: var(--radius-sm);
+    border: 1.5px solid #dde5e3;
+    padding: .62rem .9rem;
+    font-size: 1rem;
+    min-height: 46px;
+    color: var(--ink);
+    background-color: #fff;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+textarea.form-control { min-height: unset; }
+.form-control-sm, .form-select-sm {
+    min-height: 38px;
+    font-size: .9rem;
+    padding: .4rem .7rem;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 .2rem var(--brand-soft);
+}
+.form-control::placeholder { color: #9aa5a2; }
+.form-control:disabled, .form-control[readonly] { background: #f2f5f4; color: var(--ink-muted); }
+.form-text { font-size: .85rem; color: var(--ink-muted); }
+.required-star { color: var(--danger); }
+
+/* ---------- Buttons ---------- */
+.btn {
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: .95rem;
+    padding: .55rem 1.2rem;
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.btn-sm { font-size: .85rem; padding: .38rem .9rem; border-radius: 999px; }
+.btn:hover { filter: brightness(0.97); }
+.btn-primary {
+    background: linear-gradient(115deg, var(--brand), var(--brand-dark));
+    border: none;
+}
+.btn-outline-primary { color: var(--brand-dark); border-color: var(--brand); }
+.btn-outline-primary:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+.btn-primary:hover, .btn-success:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(13, 148, 136, .3);
+}
+.btn-success { background: linear-gradient(115deg, var(--success), #15803d); border: none; }
+.btn-success:hover { box-shadow: 0 8px 18px rgba(22,163,74,.28); }
+.btn-outline-light { font-weight: 700; }
+
+/* ---------- Step badges (used on multi-field forms) ---------- */
+.step-badge {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; display: inline-flex;
+    align-items: center; justify-content: center; font-size: 13.5px; font-weight: 700; margin-right: 9px;
+    flex: none;
+}
+
+/* ---------- Tables ---------- */
+.table {
+    font-size: var(--fs-sm);
+}
+.table thead th {
+    background: var(--brand-dark);
+    color: #fff;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: .82rem;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    border: none;
+    padding: .85rem .9rem;
+}
+.table-hover tbody tr:hover { background: var(--brand-soft); }
+.table td, .table th { vertical-align: middle; padding: .75rem .9rem; }
+.table td { font-size: var(--fs-sm); }
+
+/* ---------- Alerts ---------- */
+.alert {
+    border: none;
+    border-radius: var(--radius-md);
+    border-left: 5px solid transparent;
+    font-size: .95rem;
+}
+.alert-success { border-left-color: var(--success); }
+.alert-danger  { border-left-color: var(--danger); }
+.alert-warning { border-left-color: var(--accent-amber); }
+.alert-info    { border-left-color: #0891b2; }
+
+/* ---------- Badges ---------- */
+.badge { font-size: .78rem; font-weight: 700; padding: .4em .75em; border-radius: 999px; }
+.badge-pending  { background: #6c757d; }
+.badge-soft-success { background: rgba(22,163,74,.13); color: #15803d; }
+.badge-soft-danger  { background: rgba(225,29,72,.12); color: #e11d48; }
+.badge-soft-warning { background: rgba(245,158,11,.18); color: #b45309; }
+.badge-soft-info    { background: rgba(8,145,178,.15); color: #0891b2; }
+
+/* ---------- Nav pills / tabs used to switch input modes ---------- */
+.mode-tabs .nav-link {
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--ink-soft);
+    padding: .6rem 1.25rem;
+    margin-right: .5rem;
+    border: 1.5px solid #dde5e3;
+    background: #fff;
+    transition: all .15s ease;
+}
+.mode-tabs .nav-link.active {
+    background: linear-gradient(115deg, var(--brand), var(--brand-2));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 6px 14px rgba(13,148,136,.3);
+}
+.mode-tabs .nav-link i { margin-right: 6px; }
+
+/* ---------- Nav tabs (Admin dashboard filter tabs) ---------- */
+.nav-tabs { border-bottom: 1.5px solid #e3e9e7; }
+.nav-tabs .nav-link {
+    color: var(--ink-muted); font-size: .92rem; font-weight: 700;
+    border: none; padding: .55rem 1rem;
+}
+.nav-tabs .nav-link:hover { color: var(--brand); }
+.nav-tabs .nav-link.active-tab {
+    color: var(--brand-dark); border-bottom: 2.5px solid var(--brand); font-weight: 800;
+}
+
+/* ---------- Friendly empty states ---------- */
+.empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--ink-muted);
+    font-size: .95rem;
+}
+.empty-state i { font-size: 2.4rem; color: #b9c4c1; display: block; margin-bottom: .6rem; }
+
+/* ---------- Drag-and-drop file upload zone ---------- */
+.file-drop-zone {
+    border: 2px dashed #a9c2bd;
+    border-radius: var(--radius-md);
+    background: #f7fbfa;
+    padding: 1.75rem 1rem;
+    text-align: center;
+    transition: border-color .15s ease, background .15s ease;
+    cursor: pointer;
+}
+.file-drop-zone:hover, .file-drop-zone.drag-over {
+    border-color: var(--brand);
+    background: var(--brand-soft);
+}
+.file-drop-zone i { font-size: 2.1rem; color: var(--brand); }
+.file-drop-zone input[type="file"] { display: none; }
+.file-name-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--brand-soft); color: var(--brand-dark);
+    padding: 5px 13px; border-radius: 999px; font-size: .85rem; font-weight: 700;
+}
+
+/* ---------- Small utility ---------- */
+.text-muted-tight { color: var(--ink-muted); font-size: .85rem; }
+.divider-text {
+    display: flex; align-items: center; text-align: center; color: #9aa5a2;
+    font-size: .85rem; margin: 1rem 0;
+}
+.divider-text::before, .divider-text::after {
+    content: ""; flex: 1; border-bottom: 1px solid #e3e9e7;
+}
+.divider-text:not(:empty)::before { margin-right: .75em; }
+.divider-text:not(:empty)::after { margin-left: .75em; }
+
+/* ---------- Loading overlay for async postbacks ---------- */
+.page-busy-overlay {
+    position: fixed; inset: 0; background: rgba(255,255,255,.6);
+    display: none; align-items: center; justify-content: center;
+    z-index: 2000; backdrop-filter: blur(2px);
+}
+.page-busy-overlay.active { display: flex; }
+.page-busy-overlay .spinner-border { width: 3rem; height: 3rem; color: var(--brand) !important; }
+
+/* ---------- Compact "kebab" action menu (used on admin tables so rows
+   never need horizontal scrolling / zooming out to reach every action) ---------- */
+.action-menu-btn {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #eef4f2; border: 1.5px solid #dde7e4; color: var(--ink-soft);
+    font-size: 1.05rem; transition: all .15s ease;
+}
+.action-menu-btn:hover, .action-menu-btn:focus {
+    background: var(--brand-soft); border-color: var(--brand); color: var(--brand-dark);
+}
+.action-menu-btn::after { display: none; } /* hide default caret */
+.dropdown-menu { border-radius: var(--radius-md); box-shadow: var(--shadow-hover); border: 1px solid #e9ece9; font-size: .92rem; padding: .4rem; }
+.dropdown-item { border-radius: 9px; padding: .5rem .7rem; font-weight: 600; }
+.dropdown-item i { width: 18px; display: inline-block; text-align: center; margin-right: 4px; }
+.dropdown-item:active, .dropdown-item.active { background: var(--brand-soft); color: var(--brand-dark); }
+.dropdown-item.text-danger:hover { background: rgba(225,29,72,.1); color: var(--danger) !important; }
+.dropdown-item.text-success:hover { background: rgba(22,163,74,.1); color: var(--success) !important; }
+.dropdown-menu li:empty { display: none; } /* collapses menu items whose server control set Visible="false" */
+
+/* ---------- Wide desktop layout comfort ----------
+   Keep very large monitors from stretching content edge-to-edge,
+   and keep dashboards using the full width they need without
+   requiring the user to zoom out. */
+@media (min-width: 1600px) {
+    .container-fluid.px-4 { padding-left: 2.5rem !important; padding-right: 2.5rem !important; }
+}
+
+@media (max-width: 576px) {
+    .navbar .container, .navbar .container-fluid { flex-wrap: wrap; row-gap: 8px; }
+}

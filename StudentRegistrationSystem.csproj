@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F2C1A4E-9B3D-4E5F-8A6B-7C8D9E0F1A2B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StudentRegistrationSystem</RootNamespace>
+    <AssemblyName>StudentRegistrationSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\DBHelper.cs" />
+    <Compile Include="Helpers\EmailHelper.cs" />
+    <Compile Include="Helpers\EmailDeliveryException.cs" />
+    <Compile Include="Helpers\AppLogger.cs" />
+    <Compile Include="Helpers\AdminAuth.cs" />
+    <Compile Include="Helpers\FileImportHelper.cs" />
+    <Compile Include="Helpers\RichTextSanitizer.cs" />
+    <Compile Include="Helpers\RichTextDocumentHelper.cs" />
+    <Compile Include="Helpers\AdvertisementHelper.cs" />
+    <Compile Include="Helpers\RegistrationFeeHelper.cs" />
+    <Compile Include="Helpers\HomeBannerHelper.cs" />
+    <Compile Include="Helpers\CandidateCarouselHelper.cs" />
+    <Compile Include="Helpers\TimetableSetupHelper.cs" />
+    <Compile Include="Helpers\TimetableConflictDetector.cs" />
+    <Compile Include="Helpers\TimetableGenerationEngine.cs" />
+    <Compile Include="Helpers\TimetableHelper.cs" />
+    <Compile Include="Helpers\InstituteAuth.cs" />
+    <Compile Include="Helpers\InstituteDashboardHelper.cs" />
+    <Compile Include="Helpers\InstituteRegistrationHelper.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InstituteLogin.aspx.cs">
+      <DependentUpon>InstituteLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstituteLogin.aspx.designer.cs">
+      <DependentUpon>InstituteLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InstituteDashboard.aspx.cs">
+      <DependentUpon>InstituteDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstituteDashboard.aspx.designer.cs">
+      <DependentUpon>InstituteDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InstituteRegister.aspx.cs">
+      <DependentUpon>InstituteRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstituteRegister.aspx.designer.cs">
+      <DependentUpon>InstituteRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InstituteManagement.aspx.cs">
+      <DependentUpon>InstituteManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstituteManagement.aspx.designer.cs">
+      <DependentUpon>InstituteManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RichTextEditor.aspx.cs">
+      <DependentUpon>RichTextEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RichTextEditor.aspx.designer.cs">
+      <DependentUpon>RichTextEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RichTextEditorEdit.aspx.cs">
+      <DependentUpon>RichTextEditorEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RichTextEditorEdit.aspx.designer.cs">
+      <DependentUpon>RichTextEditorEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdvertisementManagement.aspx.cs">
+      <DependentUpon>AdvertisementManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdvertisementManagement.aspx.designer.cs">
+      <DependentUpon>AdvertisementManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdvertisementEdit.aspx.cs">
+      <DependentUpon>AdvertisementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdvertisementEdit.aspx.designer.cs">
+      <DependentUpon>AdvertisementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FeeStructureManagement.aspx.cs">
+      <DependentUpon>FeeStructureManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeeStructureManagement.aspx.designer.cs">
+      <DependentUpon>FeeStructureManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FeeStructureEdit.aspx.cs">
+      <DependentUpon>FeeStructureEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeeStructureEdit.aspx.designer.cs">
+      <DependentUpon>FeeStructureEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentFeeDemand.aspx.cs">
+      <DependentUpon>StudentFeeDemand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentFeeDemand.aspx.designer.cs">
+      <DependentUpon>StudentFeeDemand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecordPayment.aspx.cs">
+      <DependentUpon>RecordPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecordPayment.aspx.designer.cs">
+      <DependentUpon>RecordPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FeeReconciliation.aspx.cs">
+      <DependentUpon>FeeReconciliation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeeReconciliation.aspx.designer.cs">
+      <DependentUpon>FeeReconciliation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BannerManagement.aspx.cs">
+      <DependentUpon>BannerManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BannerManagement.aspx.designer.cs">
+      <DependentUpon>BannerManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BannerEdit.aspx.cs">
+      <DependentUpon>BannerEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BannerEdit.aspx.designer.cs">
+      <DependentUpon>BannerEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Display.aspx.cs">
+      <DependentUpon>Display.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Display.aspx.designer.cs">
+      <DependentUpon>Display.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BulkRegister.aspx.cs">
+      <DependentUpon>BulkRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BulkRegister.aspx.designer.cs">
+      <DependentUpon>BulkRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableSetup.aspx.cs">
+      <DependentUpon>TimetableSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableSetup.aspx.designer.cs">
+      <DependentUpon>TimetableSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableFacultyManagement.aspx.cs">
+      <DependentUpon>TimetableFacultyManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableFacultyManagement.aspx.designer.cs">
+      <DependentUpon>TimetableFacultyManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableFacultyEdit.aspx.cs">
+      <DependentUpon>TimetableFacultyEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableFacultyEdit.aspx.designer.cs">
+      <DependentUpon>TimetableFacultyEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableRoomManagement.aspx.cs">
+      <DependentUpon>TimetableRoomManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableRoomManagement.aspx.designer.cs">
+      <DependentUpon>TimetableRoomManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableRoomEdit.aspx.cs">
+      <DependentUpon>TimetableRoomEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableRoomEdit.aspx.designer.cs">
+      <DependentUpon>TimetableRoomEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableGenerate.aspx.cs">
+      <DependentUpon>TimetableGenerate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableGenerate.aspx.designer.cs">
+      <DependentUpon>TimetableGenerate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableEditor.aspx.cs">
+      <DependentUpon>TimetableEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimetableEditor.aspx.designer.cs">
+      <DependentUpon>TimetableEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassTimetableView.aspx.cs">
+      <DependentUpon>ClassTimetableView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClassTimetableView.aspx.designer.cs">
+      <DependentUpon>ClassTimetableView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FacultyTimetableView.aspx.cs">
+      <DependentUpon>FacultyTimetableView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FacultyTimetableView.aspx.designer.cs">
+      <DependentUpon>FacultyTimetableView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RoomTimetableView.aspx.cs">
+      <DependentUpon>RoomTimetableView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RoomTimetableView.aspx.designer.cs">
+      <DependentUpon>RoomTimetableView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Home.aspx" />
+    <Content Include="TimetableSetup.aspx" />
+    <Content Include="TimetableFacultyManagement.aspx" />
+    <Content Include="TimetableFacultyEdit.aspx" />
+    <Content Include="TimetableRoomManagement.aspx" />
+    <Content Include="TimetableRoomEdit.aspx" />
+    <Content Include="TimetableGenerate.aspx" />
+    <Content Include="TimetableEditor.aspx" />
+    <Content Include="ClassTimetableView.aspx" />
+    <Content Include="FacultyTimetableView.aspx" />
+    <Content Include="RoomTimetableView.aspx" />
+    <Content Include="BannerManagement.aspx" />
+    <Content Include="BannerEdit.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Display.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Dashboard.aspx" />
+    <Content Include="BulkRegister.aspx" />
+    <Content Include="ChangePassword.aspx" />
+    <Content Include="AdminLogin.aspx" />
+    <Content Include="InstituteLogin.aspx" />
+    <Content Include="InstituteDashboard.aspx" />
+    <Content Include="InstituteRegister.aspx" />
+    <Content Include="InstituteManagement.aspx" />
+    <Content Include="AdminDashboard.aspx" />
+    <Content Include="RichTextEditor.aspx" />
+    <Content Include="RichTextEditorEdit.aspx" />
+    <Content Include="AdvertisementManagement.aspx" />
+    <Content Include="AdvertisementEdit.aspx" />
+    <Content Include="FeeStructureManagement.aspx" />
+    <Content Include="FeeStructureEdit.aspx" />
+    <Content Include="StudentFeeDemand.aspx" />
+    <Content Include="RecordPayment.aspx" />
+    <Content Include="FeeReconciliation.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="CaptchaHandler.ashx" />
+    <Content Include="RichTextImageUpload.ashx" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Database.sql" />
+    <Content Include="README.md" />
+    <Content Include="Task8_Implementation_Notes.md" />
+    <Content Include="Task9_Implementation_Notes.md" />
+    <Content Include="Task10_Implementation_Notes.md" />
+    <Content Include="Task11_Implementation_Notes.md" />
+    <Content Include="Task12_Implementation_Notes.md" />
+    <Content Include="Database_Task12_RegistrationFee.sql" />
+    <Content Include="Task13_Implementation_Notes.md" />
+    <Content Include="Database_Task13_HomeBanners.sql" />
+    <Content Include="Task14_Implementation_Notes.md" />
+    <Content Include="Database_Task15_Timetable.sql" />
+    <Content Include="Task15_Implementation_Notes.md" />
+    <Content Include="Database_Task16_CentralisedDashboard.sql" />
+    <Content Include="Task16_Implementation_Notes.md" />
+    <Content Include="Database_Fix_DuplicateLocations.sql" />
+    <Content Include="Database_InstituteRegistration.sql" />
+    <Content Include="InstituteRegistration_Implementation_Notes.md" />
+    <Content Include="Templates\StudentOTP.html" />
+    <Content Include="Templates\AdminNotification.html" />
+    <Content Include="Templates\ApprovalNotification.html" />
+    <Content Include="Templates\RejectionNotification.html" />
+    <Content Include="Templates\RegistrationConfirmation.html" />
+    <Content Include="Uploads\Students\.gitkeep" />
+    <Content Include="Uploads\RichTextImages\.gitkeep" />
+    <Content Include="Uploads\Advertisements\.gitkeep" />
+    <Content Include="Uploads\HomeBanners\.gitkeep" />
+    <Content Include="Uploads\Reconciliation\.gitkeep" />
+    <Content Include="App_Data\Logs\.gitkeep" />
+    <Content Include="Content\site.css" />
+    <Content Include="Content\auth.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!--
+    To modify your build process, add your task inside one of the targets below and uncomment it.
+    Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild"> </Target>
+    <Target Name="AfterBuild">  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44300/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
